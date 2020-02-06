@@ -16,21 +16,7 @@ $(document).ready(function() {
         success: function (data) {
           console.log(data.results);
           var arrayFilms = data.results;
-          for (var i = 0; i < arrayFilms.length; i++) {
-            var film = arrayFilms[i];
-            console.log(film);
-            var source = $('#film-template').html();
-            var template = Handlebars.compile(source);
-            var context = {
-              title: film.title,
-              original_title: film.original_title,
-              original_language: film.original_language,
-              vote_average: film.vote_average
-            };
-            var html = template(context);
-            $('.covers').append(html);
-          }
-
+          printFilms(arrayFilms);
         },
         error : function (request, state, errors) {
           console.log('Errore ' + errors);
@@ -44,3 +30,20 @@ $(document).ready(function() {
 
 
 // Functions--------------------------
+
+function printFilms(array) {
+  for (var i = 0; i < array.length; i++) {
+    var film = array[i];
+    var source = $('#film-template').html();
+    var template = Handlebars.compile(source);
+    var context = {
+      title: film.title,
+      original_title: film.original_title,
+      original_language: film.original_language,
+      vote_average: film.vote_average
+    };
+    var html = template(context);
+    $('.covers').append(html);
+  }
+
+}
