@@ -15,6 +15,10 @@ header {
   height: 80px;
   background-color: black
 }
+main {
+  width: 95%;
+  margin: 10px auto;
+}
 .header-container {
   width: 95%;
   margin: 0 auto;

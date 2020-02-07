@@ -25,18 +25,29 @@
     </header>
     <!-- /Header -->
     <!-- Main -->
+    <main>
+      <ul class="covers">
 
-    <ul class="covers">
-
-    </ul>
-  <!-- /Main -->
+      </ul>
+    </main>
+    <!-- /Main -->
 
 
 
 
     <!-- Template-handlebars -->
     <script id="film-template" type="text/x-handlebars-template">
-      <li>{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
+      <li>{{title}}
+        <ul>
+          <li>Titolo Originale : {{original_title}}
+          </li>
+          <li>Lingua Originale : {{original_language}}
+          </li>
+          <li>Voto : {{vote_average}}
+          </li>
+        </ul>
+      </li>
+
 
     </script>
   <script src="js/script.js" charset="utf-8"></script>

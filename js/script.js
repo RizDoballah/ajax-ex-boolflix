@@ -1,63 +1,17 @@
-// My api: 5d285ad7ca8d96394a45a69142e4ce2f
-
 $(document).ready(function() {
   $('#search').click(function() {
-    $('.covers').html('');
     var query = $('#type').val();
     console.log(query);
-    $.ajax(
-      {
-        url : 'https://api.themoviedb.org/3/search/movie',
-        method : 'GET',
-        data : {
-          api_key : '5d285ad7ca8d96394a45a69142e4ce2f',
-          query : query
-        },
-        success: function (data) {
-          console.log(data.results);
-          var arrayFilms = data.results;
-          if (arrayFilms.length == 0) {
-          $('.covers').text('Messaggio di Boolflix "Titolo non disponibile"');
-        } else {
-          printFilms(arrayFilms);
-        }
-        },
-        error : function (request, state, errors) {
-          console.log('Errore ' + errors);
-
-        }
-
-    });
+    getFilms(query);
+    reset();
   });
+
   $('#type').keypress(
     function(event) {
-      $('.covers').html('');
       var query = $('#type').val();
       if (event.which == 13) {
-        $.ajax(
-          {
-            url : 'https://api.themoviedb.org/3/search/movie',
-            method : 'GET',
-            data : {
-              api_key : '5d285ad7ca8d96394a45a69142e4ce2f',
-              query : query
-            },
-            success: function (data) {
-              console.log(data.results);
-              var arrayFilms = data.results;
-              if (arrayFilms.length == 0) {
-              $('.covers').text('Messaggio di Boolflix "Titolo non disponibile"');
-            } else {
-              printFilms(arrayFilms);
-            }
-            },
-            error : function (request, state, errors) {
-              console.log('Errore ' + errors);
-
-            }
-
-        });
-
+        getFilms(query);
+        reset();
       }
     }
   );
@@ -82,4 +36,35 @@ function printFilms(array) {
     $('.covers').append(html);
   }
 
+}
+
+function getFilms(string) {
+  var url = 'https://api.themoviedb.org/3/search/movie';
+  var api_key = '5d285ad7ca8d96394a45a69142e4ce2f';
+  $.ajax(
+    {
+      url : url ,
+      method : 'GET',
+      data : {
+        api_key :api_key ,
+        query : string
+      },
+      success: function (data) {
+        console.log(data.results);
+        var arrayFilms = data.results;
+        if (arrayFilms.length == 0) {
+        $('.covers').text('Messaggio di Boolflix "Titolo non disponibile"');
+      } else {
+        printFilms(arrayFilms);
+      }
+      },
+      error : function (request, state, errors) {
+        console.log('Errore ' + errors);
+      }
+  });
+}
+
+function reset() {
+  $('.covers').html('');
+  $('#type').val('');
 }
