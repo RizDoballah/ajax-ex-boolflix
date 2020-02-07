@@ -23,22 +23,3 @@ main {
   width: 95%;
   margin: 10px auto;
 }
-
-.stars .star {
-  display: inline-block;
-  font-size: x-large;
-  width: 30px;
-  color: gray;
-}
-
-.star.full {
-  color: gold;
-}
-.star.full:after {
-  content:'\2605';
-  color: gold;
-  position: absolute;
-  margin-left: -20px;
-  width: 20px;
-  overflow: hidden;
-}

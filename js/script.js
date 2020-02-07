@@ -30,24 +30,28 @@ function printFilms(array) {
       title: film.title,
       original_title: film.original_title,
       original_language: film.original_language,
-      vote_average: Math.round((Math.round(film.vote_average) / 2))
+      vote_average: getRanking(film.vote_average)
     }
     var html = template(context);
     $('.covers').append(html);
-
-    // var starTotal = 5;
-    //
-    // var rating = context.vote_average;
-    // for (var i = 1; i < 6; i++) {
-    //   if (rating == 1 ) {
-    //     $('#film-template').children().find('.star1').addClass('full')
-    //   }
-    // }
   };
 
 }
 
+function getRanking(vote) {
+  vote = Math.floor(vote/2);
+  var stars = '';
+  for (var i = 1; i <=5; i++) {
+    if (i <= vote) {
+        stars += '<i class="fas fa-star"></i>';
 
+    } else {
+      stars += '<i class="far fa-star"></i>';
+    }
+  }
+  return stars;
+
+}
 
 
 
