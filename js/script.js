@@ -30,13 +30,26 @@ function printFilms(array) {
       title: film.title,
       original_title: film.original_title,
       original_language: film.original_language,
-      vote_average: film.vote_average
-    };
+      vote_average: Math.round((Math.round(film.vote_average) / 2))
+    }
     var html = template(context);
     $('.covers').append(html);
-  }
+
+    // var starTotal = 5;
+    //
+    // var rating = context.vote_average;
+    // for (var i = 1; i < 6; i++) {
+    //   if (rating == 1 ) {
+    //     $('#film-template').children().find('.star1').addClass('full')
+    //   }
+    // }
+  };
 
 }
+
+
+
+
 
 function getFilms(string) {
   var url = 'https://api.themoviedb.org/3/search/movie';
