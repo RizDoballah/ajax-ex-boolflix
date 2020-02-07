@@ -16,7 +16,11 @@ $(document).ready(function() {
         success: function (data) {
           console.log(data.results);
           var arrayFilms = data.results;
+          if (arrayFilms.length == 0) {
+          $('.covers').text('Messaggio di Boolflix "Titolo non disponibile"');
+        } else {
           printFilms(arrayFilms);
+        }
         },
         error : function (request, state, errors) {
           console.log('Errore ' + errors);
@@ -25,6 +29,38 @@ $(document).ready(function() {
 
     });
   });
+  $('#type').keypress(
+    function(event) {
+      $('.covers').html('');
+      var query = $('#type').val();
+      if (event.which == 13) {
+        $.ajax(
+          {
+            url : 'https://api.themoviedb.org/3/search/movie',
+            method : 'GET',
+            data : {
+              api_key : '5d285ad7ca8d96394a45a69142e4ce2f',
+              query : query
+            },
+            success: function (data) {
+              console.log(data.results);
+              var arrayFilms = data.results;
+              if (arrayFilms.length == 0) {
+              $('.covers').text('Messaggio di Boolflix "Titolo non disponibile"');
+            } else {
+              printFilms(arrayFilms);
+            }
+            },
+            error : function (request, state, errors) {
+              console.log('Errore ' + errors);
+
+            }
+
+        });
+
+      }
+    }
+  );
 });
 
 
