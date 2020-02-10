@@ -43,16 +43,16 @@
 
   <!-- Template-handlebars -->
   <script id="film-template" type="text/x-handlebars-template">
-    <li>
+    <li class=" info display-none">
       {{title}}
         <ul>
           <li>Type : {{type}}</li>
           <li>Titolo Originale : {{original_title}}</li>
           <li>Lingua Originale : {{{original_language}}}</li>
           <li>Voto : {{{vote_average}}}</li>
-          <li>cover: <img class="cover" src="https://image.tmdb.org/t/p/w342{{poster_path}}" alt=""></li>
         </ul>
     </li>
+    <img class="cover" src="{{poster_path}} "alt="cover">
 
 
     </script>

@@ -6,9 +6,6 @@ $(document).ready(function() {
     getSeries(query);
     reset();
   });
-  $('#film-template').children().find('img .cover').on("error", function() {
-    $(this).attr('src', 'img/missing.jpg');
-  });
 
   $('#type').keypress(
     function(event) {
@@ -21,6 +18,9 @@ $(document).ready(function() {
       }
     }
   );
+
+
+
 });
 
 
@@ -43,13 +43,17 @@ function printData(type, data) {
       originalTitle = element.original_name;
       var container = $('.series')
     }
+    var poster = 'img/missing.jpg';
+    if (element.poster_path) {
+      poster = 'https://image.tmdb.org/t/p/w342'+ element.poster_path;
+    }
     var context = {
       type: type,
       title: title,
       original_title: originalTitle,
       original_language: getLanguage(element.original_language),
       vote_average: getRanking(element.vote_average),
-      poster_path: element.poster_path
+      poster_path: poster
     };
     var html = template(context);
     container.append(html);
@@ -60,7 +64,7 @@ function printData(type, data) {
 function getLanguage(language) {
   var availableLanguage = ['de', 'en', 'es', 'fr', 'pt', 'it'];
   if (availableLanguage.includes(language)) {
-    language = '<img src="img/' + language + '.png" alt="language">';
+    language = '<img class="flag" src="img/' + language + '.png" alt="language">';
   }
   return language;
 }
