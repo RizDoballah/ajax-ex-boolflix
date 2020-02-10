@@ -25,26 +25,27 @@ $(document).ready(function() {
 
 function printData(type, data) {
   for (var i = 0; i < data.length; i++) {
-    var data = data[i];
+    var element = data[i];
     var title;
     var originalTitle;
     var source = $('#film-template').html();
     var template = Handlebars.compile(source);
     if (type == 'film') {
-      title = data.title;
-      originalTitle = data.original_title;
+      title = element.title;
+      originalTitle = element.original_title;
       var container = $('.films');
     } else if (type == 'series') {
-      title = data.name;
-      originalTitle = data.original_name;
+      title = element.name;
+      originalTitle = element.original_name;
       var container = $('.series')
     }
     var context = {
       type: type,
       title: title,
       original_title: originalTitle,
-      original_language: getLanguage(data.original_language),
-      vote_average: getRanking(data.vote_average)
+      original_language: getLanguage(element.original_language),
+      vote_average: getRanking(element.vote_average),
+      poster_path: element.poster_path
     };
     var html = template(context);
     container.append(html);
@@ -125,6 +126,8 @@ function getSeries(string) {
       }
   });
 }
+
+
 
 function reset() {
   $('.covers').html('');
