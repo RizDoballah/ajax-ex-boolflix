@@ -6,6 +6,9 @@ $(document).ready(function() {
     getSeries(query);
     reset();
   });
+  $('#film-template').children().find('img .cover').on("error", function() {
+    $(this).attr('src', 'img/missing.jpg');
+  });
 
   $('#type').keypress(
     function(event) {
@@ -14,6 +17,7 @@ $(document).ready(function() {
         getFilms(query);
         getSeries(query);
         reset();
+
       }
     }
   );
@@ -51,6 +55,7 @@ function printData(type, data) {
     container.append(html);
   }
 }
+
 
 function getLanguage(language) {
   var availableLanguage = ['de', 'en', 'es', 'fr', 'pt', 'it'];
