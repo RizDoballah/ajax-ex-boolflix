@@ -1,8 +1,8 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 body {
   background-color: lightgrey;
 }
@@ -20,6 +20,10 @@ header {
   margin: 0 auto;
 }
 main {
-  width: 95%;
+  width: 100%;
   margin: 10px auto;
+}
+img {
+  width: 3%;
+  vertical-align: middle;
 }

@@ -26,25 +26,32 @@
     <!-- /Header -->
     <!-- Main -->
     <main>
-      <ul class="covers">
+      <h2>Films</h2>
+      <ul class="films">
       </ul>
-      
+
+      <h2>Series</h2>
+      <ul class="series">
+
+      </ul>
+
     </main>
     <!-- /Main -->
 
 
 
 
-    <!-- Template-handlebars -->
-    <script id="film-template" type="text/x-handlebars-template">
-      <li>
-        {{title}}
-          <ul>
-            <li>Titolo Originale : {{original_title}}</li>
-            <li>Lingua Originale : {{original_language}}</li>
-            <li>Voto : {{{vote_average}}}</li>
-          </ul>
-      </li>
+  <!-- Template-handlebars -->
+  <script id="film-template" type="text/x-handlebars-template">
+    <li>
+      {{title}}
+        <ul>
+          <li>Type : {{type}}</li>
+          <li>Titolo Originale : {{original_title}}</li>
+          <li>Lingua Originale : {{{original_language}}}</li>
+          <li>Voto : {{{vote_average}}}</li>
+        </ul>
+    </li>
 
 
     </script>
