@@ -19,11 +19,9 @@ $(document).ready(function() {
     });
 
     $(document).on('mouseenter', '.cover', function () {
-      $(this).hide();
       $(this).siblings('.info').show()
     });
     $(document).on('mouseleave', '.cover', function () {
-      $(this).show();
       $(this).siblings('.info').hide();
     });
 

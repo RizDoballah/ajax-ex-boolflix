@@ -39,9 +39,9 @@
 
   <!-- Template-handlebars -->
   <script id="film-template" type="text/x-handlebars-template">
-    <li class="cover"><img class="dimention" src="{{poster_path}}" alt="cover"></li>
-    <li class="info display-none">
-      Title : {{title}}
+    <li class="cover"><img class="dimention" src="{{poster_path}}" alt="cover">
+      <li class="info display-none">
+        Title : {{title}}
         <ul>
           <li>Type: {{type}}</li>
           <li>Original Title : {{original_title}}</li>
@@ -49,6 +49,7 @@
           <li>Original Language : {{{original_language}}}</li>
           <li>Overview : {{overview }}</li>
         </ul>
+      </li>
     </li>
 
 

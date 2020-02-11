@@ -27,7 +27,7 @@ h1 {
 }
 .dimention {
   width: 342px;
-  height: 513px; 
+  height: 513px;
 }
 header {
   /* width: 100%; */
@@ -41,6 +41,7 @@ header {
 
 .films,
 .series {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 1200px;
@@ -52,9 +53,9 @@ header {
   cursor: pointer;
 }
 .info {
-  /* position: absolute;
+  position: absolute;
   top: 0;
-  left: 0; */
+  left: 0;
   margin: 20px;
   width: 342px;
   height: 513px;
