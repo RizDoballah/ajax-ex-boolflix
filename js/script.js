@@ -16,9 +16,16 @@ $(document).ready(function() {
         reset();
 
       }
-    }
-  );
+    });
 
+    $(document).on('mouseenter', '.cover', function () {
+      $(this).hide();
+      $(this).siblings('.info').show()
+    });
+    $(document).on('mouseleave', '.cover', function () {
+      $(this).show();
+      $(this).siblings('.info').hide();
+    });
 
 
 });
@@ -43,7 +50,7 @@ function printData(type, data) {
       originalTitle = element.original_name;
       var container = $('.series')
     }
-    var poster = 'img/missing.jpg';
+    var poster = 'img/missing.png';
     if (element.poster_path) {
       poster = 'https://image.tmdb.org/t/p/w342'+ element.poster_path;
     }
@@ -53,7 +60,8 @@ function printData(type, data) {
       original_title: originalTitle,
       original_language: getLanguage(element.original_language),
       vote_average: getRanking(element.vote_average),
-      poster_path: poster
+      poster_path: poster,
+      overview: element.overview
     };
     var html = template(context);
     container.append(html);
@@ -74,10 +82,10 @@ function getRanking(vote) {
   var stars = '';
   for (var i = 1; i <=5; i++) {
     if (i <= vote) {
-        stars += '<i class="fas fa-star"></i>';
+        stars += '<i class="fas fa-star gold"></i>';
 
     } else {
-      stars += '<i class="far fa-star"></i>';
+      stars += '<i class="far fa-star gold"></i>';
     }
   }
   return stars;
@@ -139,6 +147,7 @@ function getSeries(string) {
 
 
 function reset() {
-  $('.covers').html('');
+  $('.films').html('');
+  $('.series').html('');
   $('#type').val('');
 }
