@@ -19,8 +19,12 @@
     <header>
       <div class="header-container">
         <h1>Boolflix</h1>
-        <input id="type" type="text" name="search-bar" value="">
-        <button id="search" type="button"><i class="fas fa-search"></i></button>
+        <div class="input">
+          <input id="type" type="text" name="search-bar" value="">
+          <button id="search" type="button"><i class="fas fa-search"></i></button>
+
+        </div>
+
       </div>
     </header>
     <!-- /Header -->
@@ -39,8 +43,8 @@
 
   <!-- Template-handlebars -->
   <script id="film-template" type="text/x-handlebars-template">
-    <li class="cover"><img class="dimention" src="{{poster_path}}" alt="cover">
-      <li class="info display-none">
+    <li class="cover"><img class="dimension" src="{{poster_path}}" alt="cover">
+      <div class="info display-none ">
         Title : {{title}}
         <ul>
           <li>Type: {{type}}</li>
@@ -49,7 +53,8 @@
           <li>Original Language : {{{original_language}}}</li>
           <li>Overview : {{overview }}</li>
         </ul>
-      </li>
+
+      </div>
     </li>
 
 

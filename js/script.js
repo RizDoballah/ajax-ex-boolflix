@@ -19,10 +19,10 @@ $(document).ready(function() {
     });
 
     $(document).on('mouseenter', '.cover', function () {
-      $(this).siblings('.info').show()
+      $(this).children('.info').show()
     });
     $(document).on('mouseleave', '.cover', function () {
-      $(this).siblings('.info').hide();
+      $(this).children('.info').hide();
     });
 
 
@@ -48,7 +48,7 @@ function printData(type, data) {
       originalTitle = element.original_name;
       var container = $('.series')
     }
-    var poster = 'img/missing.png';
+    var poster = 'img/missing.jpg';
     if (element.poster_path) {
       poster = 'https://image.tmdb.org/t/p/w342'+ element.poster_path;
     }

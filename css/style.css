@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 body {
-  /* max-width: 1200px; */
   font-size: 18px;
   background-color: darkgrey;
 }
@@ -17,46 +16,55 @@ ul {
 .display-block {
   display: block;
 }
+.gold {
+  color: gold;
+}
+.dimension {
+  width: 342px;
+  height: 513px;
+}
 h1 {
   margin-bottom: 10px;
   color: red;
   font-style: italic;
 }
-.gold {
-  color: gold;
-}
-.dimention {
-  width: 342px;
-  height: 513px;
-}
 header {
-  /* width: 100%; */
+  width: 100%;
   height: 100px;
   background-color: black
 }
 .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 95%;
   margin: 0 auto;
+  line-height: 100px;
+}
+#type,
+#search {
+  padding: 3px;
 }
 
 .films,
 .series {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 1200px;
 }
 .cover {
+  position: relative;
   width: 342px;
   height: 513px;
   margin: 20px;
+  border: 1px solid;
+  box-shadow: 5px 8px;
   cursor: pointer;
 }
 .info {
   position: absolute;
   top: 0;
   left: 0;
-  margin: 20px;
   width: 342px;
   height: 513px;
   padding: 40px 20px;
