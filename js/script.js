@@ -1,5 +1,24 @@
 $(document).ready(function() {
   getGenre('film');
+  $(document).on('change', 'select', function() {
+    var genreSelected = $('select').val();
+    console.log(genreSelected);
+    $('.info').each(function(){
+      var genre = $('#genre').html();
+      console.log(genre);
+      var splitGenre = genre.split(',');
+      console.log(splitGenre);
+      for (var i = 0; i < splitGenre.length; i++) {
+        if (splitGenre[i] == genreSelected) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      }
+
+    });
+  });
+
   getGenre('series');
   $('#search').click(function() {
     var query = $('#type').val();
@@ -61,7 +80,8 @@ function printData(type, data) {
       original_language: getLanguage(element.original_language),
       vote_average: getRanking(element.vote_average),
       poster_path: poster,
-      overview: element.overview
+      overview: element.overview,
+      genre_ids: element.genre_ids
     };
     var html = template(context);
     container.append(html);

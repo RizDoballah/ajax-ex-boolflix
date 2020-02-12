@@ -45,10 +45,11 @@
   <!-- Template-handlebars -->
   <script id="film-template" type="text/x-handlebars-template">
     <li class="cover"><img class="dimension" src="{{poster_path}}" alt="cover">
-      <div class="info display-none ">
+      <div class="info display-none">
         Title : {{title}}
         <ul>
           <li>Type: {{type}}</li>
+          <li id="genre">{{genre_ids}}</li>
           <li>Original Title : {{original_title}}</li>
           <li>Vote : {{{vote_average}}}</li>
           <li>Original Language : {{{original_language}}}</li>
