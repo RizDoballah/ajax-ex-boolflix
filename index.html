@@ -22,14 +22,15 @@
         <div class="input">
           <input id="type" type="text" name="search-bar" value="">
           <button id="search" type="button"><i class="fas fa-search"></i></button>
-
         </div>
-
       </div>
     </header>
     <!-- /Header -->
     <!-- Main -->
     <main>
+      <select class="genre">
+        <option value="all">All</option>
+      </select>
       <ul class="films">
       </ul>
 
@@ -56,11 +57,10 @@
 
       </div>
     </li>
-
-
-
-
-    </script>
+  </script>
+  <script id="select" type="text/x-handlebars-template">
+    <option value="{{id}}">{{name}}</option>
+  </script>
   <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  getGenre('film');
+  getGenre('series');
   $('#search').click(function() {
     var query = $('#type').val();
     console.log(query);
@@ -66,7 +68,6 @@ function printData(type, data) {
   }
 }
 
-
 function getLanguage(language) {
   var availableLanguage = ['de', 'en', 'es', 'fr', 'pt', 'it'];
   if (availableLanguage.includes(language)) {
@@ -115,6 +116,88 @@ function getFilms(string) {
       }
   });
 }
+function getGenre(type) {
+  var genre = [];
+  var url;
+  if (type == 'film') {
+    url = 'https://api.themoviedb.org/3/genre/movie/list' ;
+  } else if (type == 'series') {
+    url = 'https://api.themoviedb.org/3/genre/tv/list';
+  }
+  $.ajax(
+    {
+      url : url,
+      method : 'GET',
+      data : {
+        api_key :'5d285ad7ca8d96394a45a69142e4ce2f' ,
+      },
+      success: function (data) {
+        var arrayGenre = data.genres;
+        for (var i = 0; i < arrayGenre.length; i++) {
+          genre.push(arrayGenre[i]);
+        }
+        console.log(genre);
+        var source = $('#select').html();
+        var template = Handlebars.compile(source);
+        for (var j = 0; j < genre.length; j++) {
+           var context = {
+             id : genre[j].id,
+             name : genre[j].name,
+            }
+           var html = template(context);
+           $('.genre').append(html);
+         }
+
+      },
+      error : function (request, state, errors) {
+        console.log('Errore ' + errors);
+      }
+  });
+}
+// function printGenres(genre) {
+//   var source = $('#select').html();
+//   var template = Handlebars.compile(source);
+//
+//   for (var i = 0; i < genre.length; i++) {
+//     var context = {
+//       id : genre[i].id,
+//       name : genre[i].name,
+//      }
+//     var html = template(context);
+//     $('.genre').append(html);
+//   }
+// }
+//
+// function getGenre() {
+//   $('.genre').html("<option value="+'all'+">All</option>");
+//   var genre = [];
+//   var url;
+//   if (type == 'film') {
+//     url = 'https://api.themoviedb.org/3/genre/movie/list'
+//   }else if (type == 'series') {
+//     url = 'https://api.themoviedb.org/3/genre/tv/list'
+//   }
+//   $.ajax(
+//     {
+//       url : url ,
+//       method : 'GET',
+//       data : {
+//         api_key :'5d285ad7ca8d96394a45a69142e4ce2f' ,
+//       },
+//       success: function (data) {
+//         var arrayGenre = data.genres;
+//         for (var i = 0; i < arrayGenre.length; i++) {
+//           genre.push(arrayGenre[i]);
+//         }
+//         printGenres(genre);
+//         printGenres(genre);
+//       },
+//       error : function (request, state, errors) {
+//         console.log('Errore ' + errors);
+//       }
+//   });
+//
+// }
 
 function getSeries(string) {
   var url = 'https://api.themoviedb.org/3/search/tv';
@@ -141,8 +224,6 @@ function getSeries(string) {
       }
   });
 }
-
-
 
 function reset() {
   $('.films').html('');
