@@ -31,12 +31,13 @@
       <select class="genre">
         <option value="all">All</option>
       </select>
-      <ul class="films">
-      </ul>
 
-      <ul class="series">
+        <ul class="films">
+        </ul>
 
-      </ul>
+        <ul class="series">
+        </ul>
+
 
     </main>
     <!-- /Main -->
@@ -44,12 +45,12 @@
 
   <!-- Template-handlebars -->
   <script id="film-template" type="text/x-handlebars-template">
-    <li class="cover"><img class="dimension" src="{{poster_path}}" alt="cover">
+    <li class="film-series" data-generi-id="{{genre_ids}}" data-generi-name="{{generi_name}}">
+      <img class=" cover dimension" src="{{poster_path}}" alt="{{title}}">
       <div class="info display-none">
-        Title : {{title}}
+        <h2>{{title}}</h2>
         <ul>
           <li>Type: {{type}}</li>
-          <li id="genre">{{genre_ids}}</li>
           <li>Original Title : {{original_title}}</li>
           <li>Vote : {{{vote_average}}}</li>
           <li>Original Language : {{{original_language}}}</li>

@@ -1,25 +1,7 @@
 $(document).ready(function() {
   getGenre('film');
-  $(document).on('change', 'select', function() {
-    var genreSelected = $('select').val();
-    console.log(genreSelected);
-    $('.info').each(function(){
-      var genre = $('#genre').html();
-      console.log(genre);
-      var splitGenre = genre.split(',');
-      console.log(splitGenre);
-      for (var i = 0; i < splitGenre.length; i++) {
-        if (splitGenre[i] == genreSelected) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      }
-
-    });
-  });
-
   getGenre('series');
+
   $('#search').click(function() {
     var query = $('#type').val();
     console.log(query);
@@ -38,11 +20,35 @@ $(document).ready(function() {
 
       }
     });
+    $(document).on('change', 'select', function() {
+      var genreSelected = $('select').val();
+      console.log(genreSelected);
+      $('.film-series').each(function(){
+        var genre = $('.film-series').attr('data-generi-id');
+        console.log(genre);
+        var splitGenre = genre.split(',');
+        console.log(splitGenre);
+        if (splitGenre.includes(genreSelected)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+        // for (var i = 0; i < splitGenre.length; i++) {
+        //   console.log(splitGenre[i]);
+        //   if (splitGenre[i] == genreSelected) {
+        //     $(this).show();
+        //   } else {
+        //     $(this).hide();
+        //   }
+        // }
 
-    $(document).on('mouseenter', '.cover', function () {
+      });
+    });
+
+    $(document).on('mouseenter', '.film-series', function () {
       $(this).children('.info').show()
     });
-    $(document).on('mouseleave', '.cover', function () {
+    $(document).on('mouseleave', '.film-series', function () {
       $(this).children('.info').hide();
     });
 
@@ -162,7 +168,7 @@ function getGenre(type) {
         for (var j = 0; j < genre.length; j++) {
            var context = {
              id : genre[j].id,
-             name : genre[j].name,
+             generi_name : genre[j].name,
             }
            var html = template(context);
            $('.genre').append(html);
